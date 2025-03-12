@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Rock Paper Scissors</h1>
+    <button onclick="playGame('rock')">Rock</button>
+    <button onclick="playGame('paper')">Paper</button>
+    <button onclick="playGame('scissors')">Scissors</button>
+
+    <p id="result"></p>
+
+    <script>
+        function playGame(playerSelection) {
+            const options = ['rock', 'paper', 'scissors'];
+            const aiSelection = options[Math.floor(Math.random() * 3)];
+            let gameOutcome = '';
+
+            if (playerSelection === aiSelection) {
+                gameOutcome = "It's a tie!";
+            } else if (
+                (playerSelection === 'rock' && aiSelection === 'scissors') ||
+                (playerSelection === 'paper' && aiSelection === 'rock') ||
+                (playerSelection === 'scissors' && aiSelection === 'paper')
+            ) {
+                gameOutcome = 'You win!';
+            } else {
+                gameOutcome = 'You lose!';
+            }
+
+            // Show result in the HTML page instead of an alert
+            document.getElementById('result').innerText = 
+                `You chose ${playerSelection}, computer chose ${aiSelection}. ${gameOutcome}`;
+        }
+    </script>
+
+</body>
+</html>
